@@ -27,15 +27,20 @@ public class List implements CommandExecutor {
                     for (String keys_rank : allRanksSection.getKeys(false)) {
                         if (allRanksSection.getConfigurationSection(keys_rank) != null) {
                             ConfigurationSection rank_section = allRanksSection.getConfigurationSection(keys_rank);
-                            if (rank_section.getString("color") != null && rank_section.getString("permissions") != null) {
+                            if (rank_section.getString("color") != null) {
                                 String color = rank_section.getString("color");
-                                String permissions = rank_section.getString("permissions");
-                                player.sendMessage("Le rang "+ color + keys_rank + ChatColor.WHITE + " et comme permissions " + ChatColor.YELLOW  + permissions + ChatColor.WHITE + ".");
+                                if (rank_section.getString("permissions") != null) {
+                                    String permissions = rank_section.getString("permissions");
+                                    player.sendMessage("Le rang "+ color + keys_rank + ChatColor.WHITE + " a pour permissions " + ChatColor.YELLOW  + permissions + ChatColor.WHITE + ".");
+                                } else {
+                                    player.sendMessage("Le rang " + color + keys_rank  + ChatColor.WHITE + " n'a pas de permissions.");
+                                }
                             } else {
                                 player.sendMessage("Les données du rang " + keys_rank + " sont incomplètes.");
                             }
                         }
                     }
+                    return true;
                 }
             }
         }

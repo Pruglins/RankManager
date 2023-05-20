@@ -63,6 +63,7 @@ public class SetNameRank implements CommandExecutor {
 
                         player.sendMessage("[" + ChatColor.BLUE + "Rank Manager" + ChatColor.WHITE + "] "
                         + "Le rang " + rank_color + new_rank_name + ChatColor.WHITE + " qui avait pour ancien nom " + rank_color + current_rank_name + ChatColor.WHITE + " a changé de nom avec succès.");
+                        return true;
                     } else {
                         player.sendMessage("[" + ChatColor.BLUE + "Rank Manager" + ChatColor.WHITE + "] "
                         + "Le rang " + ChatColor.RED + current_rank_name + ChatColor.WHITE + " n'existe pas.");

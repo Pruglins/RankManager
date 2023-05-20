@@ -43,6 +43,7 @@ public class SetColorRank implements CommandExecutor {
                         setColorRank(name, color);
                         player.sendMessage("[" + ChatColor.BLUE + "Rank Manager" + ChatColor.WHITE + "] "
                                 + "La couleur du rang " + plugin.getConfig().get("ranks." + name + ".color") + name + ChatColor.WHITE + " a été changé avec succès.");
+                        return true;
                     } else {
                         player.sendMessage("[" + ChatColor.BLUE + "Rank Manager" + ChatColor.WHITE + "] "
                                 + "Le rang " + ChatColor.RED + name + ChatColor.WHITE + " n'existe pas.");

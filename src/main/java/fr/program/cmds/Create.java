@@ -7,6 +7,8 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import java.util.List;
+
 public class Create implements CommandExecutor {
     private final Main plugin;
 
@@ -15,8 +17,10 @@ public class Create implements CommandExecutor {
     }
 
     private void addNewRank(String name, String color) {
+        List<String> perms = null;
+
         plugin.getConfig().set("ranks." + name + ".color", color); // ranks.RANK_NAME.color
-        plugin.getConfig().set("ranks." + name + ".permissions", "Null"); // ranks.RANK_NAME.permissions
+        plugin.getConfig().set("ranks." + name + ".permissions", perms); // ranks.RANK_NAME.permissions
         plugin.saveConfig();
     }
 
@@ -31,6 +35,7 @@ public class Create implements CommandExecutor {
                     addNewRank(name, color);
                     player.sendMessage("[" + ChatColor.BLUE + "Rank Manager" + ChatColor.WHITE + "] "
                             + "Le rang " + plugin.getConfig().get("ranks." + name + ".color") + name + ChatColor.WHITE + " a été créé avec succès.");
+                    return true;
                 } else {
                     player.sendMessage("[" + ChatColor.BLUE + "Rank Manager" + ChatColor.WHITE + "] "
                             + "Veuillez préciser le nom du grade et la couleur sous ce format : '&x' où 'x' est entre '0' et '9' ou de 'a' à 'f' !");
