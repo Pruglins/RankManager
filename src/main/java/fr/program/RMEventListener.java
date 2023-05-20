@@ -1,6 +1,7 @@
 package fr.program;
 
 import org.bukkit.ChatColor;
+import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -31,8 +32,12 @@ public class RMEventListener implements Listener {
     public void onJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
         FileConfiguration config = plugin.getConfig();
-        String rank_name = config.getString("players." + player.getName() + ".rank");
-        String rank_color = config.getString("ranks." + rank_name + ".color");
-        event.setJoinMessage("[" + rank_color + rank_name + ChatColor.WHITE + "] " + ChatColor.BOLD + player.getName() + ChatColor.RESET + " a rejoint le serveur !");
+        if (config.getString("players." + player.getName() + ".rank") != null) {
+            String rank_name = config.getString("players." + player.getName() + ".rank");
+            String rank_color = config.getString("ranks." + rank_name + ".color");
+            event.setJoinMessage("[" + rank_color + rank_name + ChatColor.WHITE + "] " + ChatColor.BOLD + player.getName() + ChatColor.RESET + " a rejoint le serveur !");
+        } else {
+            event.setJoinMessage(ChatColor.BOLD + player.getName() + ChatColor.RESET + " a rejoint le serveur !");
+        }
     }
 }
