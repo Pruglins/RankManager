@@ -1,0 +1,17 @@
+.gradle
+.idea
+apache-maven-3.6.0
+BuildData
+Bukkit
+CraftBukkit
+gradle
+PortableGit-2.30.0-64-bit
+server
+Spigot
+work
+build.gradle
+BuildTools.jar
+BuildTools.log.txt
+gradlew
+gradlew.bat
+settings.gradle
