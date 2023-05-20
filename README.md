@@ -2,13 +2,14 @@
 
 ## Description
 
-Plugin Minecraft mettant en place la création de grade en donnant un nom, une couleur, etc.
+RM est un plugin qui permet de créer des grades personnalisés en lui donnant une couleur et des permissions.
+Des préfixes sont ajoutés lorsque le joueur parle ou se connecte.
 
 ## Doc
 ### Commandes
 
 `create (name) (color)`
-- Création d'un grade en partant du nom et de la couleur.```
+- Création d'un grade en partant du nom et de la couleur.
 - `name` est le nom du rang.
 - `color` est une couleur sous le format : &X où X est entre 0 et 9 ou de a à f.
 (voir [Codes Couleur Minecraft](https://htmlcolorcodes.com/fr/codes-couleur-minecraft/))
