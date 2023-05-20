@@ -1,13 +1,15 @@
 package fr.program;
 
 import org.bukkit.ChatColor;
-import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.permissions.PermissionAttachment;
+
+import java.util.List;
 
 public class RMEventListener implements Listener {
     private final Main plugin;
@@ -23,6 +25,14 @@ public class RMEventListener implements Listener {
         FileConfiguration config = plugin.getConfig();
         String rank_name = config.getString("players." + player.getName() + ".rank");
         String rank_color = config.getString("ranks." + rank_name + ".color");
+
+        List<String> rank_perms = config.getStringList("ranks." + rank_name + ".permissions");
+
+        PermissionAttachment perm_attachment = player.addAttachment(plugin);
+
+        for (String perm : rank_perms) {
+            perm_attachment.setPermission(perm, true);
+        }
 
         event.setMessage("[" + rank_color + rank_name + ChatColor.WHITE + "] " + message);
         event.setCancelled(false);
