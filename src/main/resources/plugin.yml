@@ -12,3 +12,9 @@ commands:
   spr:
     description: Donne un rang à un joueur
     permission: rm.spr
+  scr:
+    description: Donne une nouvelle couleur à un rang
+    permission: rm.scr
+  snr:
+    description: Donne une nouvelle couleur à un rang
+    permission: rm.snr
