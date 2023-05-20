@@ -15,6 +15,11 @@ Des préfixes sont ajoutés lorsque le joueur parle ou se connecte.
 (voir [Codes Couleur Minecraft](https://htmlcolorcodes.com/fr/codes-couleur-minecraft/))
 - Exemple : `/create VIP &6`
 
+`remove (name)`
+- Supprimer un grade.
+- `name` est le nom du rang.
+- Exemple : `/remove VIP`
+
 `list`
 - Affiche tous les grades disponibles.
 - Exemple : `/list`
@@ -30,17 +35,32 @@ Des préfixes sont ajoutés lorsque le joueur parle ou se connecte.
 - (Set Color Rank) change la couleur du rang.
 - Exemple : `/scr VIP &4`
 
-`scr (rank name) (new rank name)`
+`snr (rank name) (new rank name)`
 - `rank name` est le nom du rang auparavant créé.
 - `new rank name` est le nouveau nom du rang.
 - (Set Name Rank) change le nom du rang.
 - Exemple : `/snr VIP Vip`
 - **ATTENTION** : Tous les joueurs ayant le rang possédant l'ancien nom ne verront pas leur rang disparaître.
 
+`addperm (rank name) (permission)`
+- `rank name` est le nom du rang auparavant créé.
+- `permission` est la permission que vous voulez ajouter au grade.
+- Ajoute une permission a un grade.
+- Exemple : `/addperm VIP rm.list`
+
+`removeperm (rank name) (permission)`
+- `rank name` est le nom du rang auparavant créé.
+- `permission` est la permission que vous voulez retirer au grade.
+- Retire une permission a un grade.
+- Exemple : `/removeperm VIP rm.list`
+
 ## Permissions
 
 - rm.create
+- rm.remove
 - rm.list
 - rm.spr
 - rm.scr
 - rm.snr
+- rm.addperm
+- rm.removeperm
