@@ -49,6 +49,8 @@ public class Remove implements CommandExecutor {
                     String name = args[0];
                     removeRank(config, name);
                     updateRanks(config, name);
+                    player.sendMessage("[" + ChatColor.BLUE + "Rank Manager" + ChatColor.WHITE + "] "
+                            + "Le rang " + config.getString("ranks." + name + ".color") + name + ChatColor.WHITE + " a été retiré du serveur.");
                     return true;
                 } else {
                     player.sendMessage("[" + ChatColor.BLUE + "Rank Manager" + ChatColor.WHITE + "] "

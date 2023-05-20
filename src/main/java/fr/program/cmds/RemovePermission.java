@@ -30,6 +30,8 @@ public class RemovePermission implements CommandExecutor {
                     permissions.remove(permission);
                     config.set("ranks." + name + ".permissions", permissions);
                     plugin.saveConfig();
+                    player.sendMessage("[" + ChatColor.BLUE + "Rank Manager" + ChatColor.WHITE + "] "
+                            + "La permission " + permission + " a été retiré du rang " + config.getString("ranks." + name + ".color") + name + ChatColor.WHITE + ".");
                     return true;
                 } else {
                     player.sendMessage("[" + ChatColor.BLUE + "Rank Manager" + ChatColor.WHITE + "] "
