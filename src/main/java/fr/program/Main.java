@@ -10,6 +10,7 @@ public class Main extends JavaPlugin {
         saveDefaultConfig();
 
         CommandsManager.init(this);
+        getServer().getPluginManager().registerEvents(new RMEventListener(this), this);
     }
 
     @Override
