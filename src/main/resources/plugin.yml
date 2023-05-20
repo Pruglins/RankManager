@@ -1,0 +1,14 @@
+name: RankManager
+version: 1.0
+api-version: 1.19
+main: fr.program.Main
+commands:
+  create:
+    description: Création d'un rang
+    permission: rm.create
+  list:
+    description: Liste tout les rangs
+    permission: rm.list
+  spr:
+    description: Donne un rang à un joueur
+    permission: rm.spr
