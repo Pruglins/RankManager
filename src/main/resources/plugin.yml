@@ -6,6 +6,9 @@ commands:
   create:
     description: Création d'un rang
     permission: rm.create
+  remove:
+    description: Supprime un rang
+    permission: rm.remove
   list:
     description: Liste tout les rangs
     permission: rm.list
@@ -18,3 +21,9 @@ commands:
   snr:
     description: Donne une nouvelle couleur à un rang
     permission: rm.snr
+  addperm:
+    description: Donne une permission à un rang
+    permission: rm.addperm
+  removeperm:
+    description: Retire une permission à un rang
+    permission: rm.removeperm
