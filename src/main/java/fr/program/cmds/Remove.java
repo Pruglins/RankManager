@@ -16,6 +16,17 @@ public class Remove implements CommandExecutor {
         this.plugin = plugin;
     }
 
+    private boolean itExist(String r) {
+        FileConfiguration config = plugin.getConfig();
+        ConfigurationSection allRanksSection = config.getConfigurationSection("ranks");
+        if (allRanksSection != null) {
+            if (allRanksSection.contains(r)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     private void removeRank(FileConfiguration config, String name) {
         ConfigurationSection ranksSection = config.getConfigurationSection("ranks");
         if (ranksSection != null) {
@@ -47,11 +58,17 @@ public class Remove implements CommandExecutor {
 
                 if (args.length >= 1) {
                     String name = args[0];
-                    removeRank(config, name);
-                    updateRanks(config, name);
-                    player.sendMessage("[" + ChatColor.BLUE + "Rank Manager" + ChatColor.WHITE + "] "
-                            + "Le rang " + config.getString("ranks." + name + ".color") + name + ChatColor.WHITE + " a été retiré du serveur.");
-                    return true;
+                    if (itExist(name)) {
+                        player.sendMessage("[" + ChatColor.BLUE + "Rank Manager" + ChatColor.WHITE + "] "
+                                + "Le rang " + config.getString("ranks." + name + ".color") + name + ChatColor.WHITE + " a été retiré du serveur.");
+                        removeRank(config, name);
+                        updateRanks(config, name);
+                        return true;
+                    } else {
+                        player.sendMessage("[" + ChatColor.BLUE + "Rank Manager" + ChatColor.WHITE + "] "
+                                + "Le rang " + ChatColor.RED + name + ChatColor.WHITE + " n'existe pas.");
+                        return false;
+                    }
                 } else {
                     player.sendMessage("[" + ChatColor.BLUE + "Rank Manager" + ChatColor.WHITE + "] "
                             + "Veuillez préciser le nom du grade et la couleur sous ce format : '&x' où 'x' est entre '0' et '9' ou de 'a' à 'f' !");
