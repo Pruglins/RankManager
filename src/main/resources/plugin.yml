@@ -15,11 +15,14 @@ commands:
   spr:
     description: Donne un rang à un joueur
     permission: rm.spr
+  rpr:
+    description: Retire le rang d'un joueur
+    permission: rm.rpr
   scr:
     description: Donne une nouvelle couleur à un rang
     permission: rm.scr
   snr:
-    description: Donne une nouvelle couleur à un rang
+    description: Change le nom d'un rang
     permission: rm.snr
   addperm:
     description: Donne une permission à un rang
