@@ -21,20 +21,17 @@ public class RMEventListener implements Listener {
     public void onPlayerChat(AsyncPlayerChatEvent event) {
         Player player = event.getPlayer();
         String message = event.getMessage();
-
         FileConfiguration config = plugin.getConfig();
-        String rank_name = config.getString("players." + player.getName() + ".rank");
-        String rank_color = config.getString("ranks." + rank_name + ".color");
 
-        List<String> rank_perms = config.getStringList("ranks." + rank_name + ".permissions");
+        if (config.getString("players." + player.getName() + ".rank") != null) {
+            String rank_name = config.getString("players." + player.getName() + ".rank");
+            String rank_color = config.getString("ranks." + rank_name + ".color");
 
-        PermissionAttachment perm_attachment = player.addAttachment(plugin);
-
-        for (String perm : rank_perms) {
-            perm_attachment.setPermission(perm, true);
+            event.setFormat("[" + rank_color + rank_name + ChatColor.WHITE + "]" + "<" + player.getName() + "> " + message);
+            //event.setMessage("[" + rank_color + rank_name + ChatColor.WHITE + "] " + message);
+        } else {
+            event.setMessage(message);
         }
-
-        event.setMessage("[" + rank_color + rank_name + ChatColor.WHITE + "] " + message);
         event.setCancelled(false);
     }
 
@@ -42,7 +39,16 @@ public class RMEventListener implements Listener {
     public void onJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
         FileConfiguration config = plugin.getConfig();
+
         if (config.getString("players." + player.getName() + ".rank") != null) {
+            List<String> rank_perms = config.getStringList("ranks." + config.getString("players." + player.getName() + ".rank")  + ".permissions");
+
+            PermissionAttachment perm_attachment = player.addAttachment(plugin);
+
+            for (String perm : rank_perms) {
+                perm_attachment.setPermission(perm, true);
+            }
+
             String rank_name = config.getString("players." + player.getName() + ".rank");
             String rank_color = config.getString("ranks." + rank_name + ".color");
             event.setJoinMessage("[" + rank_color + rank_name + ChatColor.WHITE + "] " + ChatColor.BOLD + player.getName() + ChatColor.RESET + " a rejoint le serveur !");
