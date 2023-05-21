@@ -8,6 +8,7 @@ public class CommandsManager {
         plugin.getCommand("remove").setExecutor(new Remove(plugin));
         plugin.getCommand("list").setExecutor(new List(plugin));
         plugin.getCommand("spr").setExecutor(new SetPlayerRank(plugin));
+        plugin.getCommand("").setExecutor(new RemovePlayerRank(plugin));
         plugin.getCommand("scr").setExecutor(new SetColorRank(plugin));
         plugin.getCommand("snr").setExecutor(new SetNameRank(plugin));
         plugin.getCommand("addperm").setExecutor(new AddPermission(plugin));
