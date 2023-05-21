@@ -28,6 +28,10 @@ Des préfixes sont ajoutés lorsque le joueur parle ou se connecte.
 - (Set Player Rank) met un rang à un joueur
 - Exemple : `/spr Program132 VIP`
 
+`rpr (player name)`
+- (Remove Player Rank) Retire le grade donné à un joueur
+- Exemple : `/rpr Program132`
+
 `scr (rank name) (new color)`
 - `rank name` est le nom du rang auparavant créé.
 - `new color` est une couleur sous le format : &X où X est entre 0 et 9 ou de a à f.
